@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heir to the Crown | Sapiens Qualia</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=MedievalSharp&display=swap" rel="stylesheet">
+
+    <style>
+        /* Base Reset & Background */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: radial-gradient(circle at center, #0b111a 0%, #000000 100%);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Main Content Container */
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Game Logo */
+        .game-logo {
+            max-width: 350px;
+            width: 80%;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8)); 
+        }
+
+        /* Dominant Title */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            color: #FDE08B;
+            margin: 0;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Subtitle - Release Date */
+        .release-date {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #cccccc;
+            margin-top: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Motto Slideshow Container */
+        .motto-container {
+            display: grid;
+            grid-template-areas: "inner";
+            max-width: 700px;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+
+        /* The Mottos */
+        .motto {
+            grid-area: inner; /* Stacks all mottos in the exact same spot */
+            font-family: 'MedievalSharp', cursive;
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            color: #ffffff;
+            line-height: 1.5;
+            font-style: italic;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            margin: 0;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 1s ease-in-out; /* 1 second smooth crossfade */
+            pointer-events: none; /* Prevents invisible text from blocking clicks */
+        }
+
+        /* The Active Motto */
+        .motto.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Footer / Company Info */
+        footer {
+            padding: 30px 20px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        footer:hover {
+            opacity: 1;
+        }
+
+        .company-logo {
+            width: 65px;
+            height: 65px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #aaaaaa;
+            margin: 5px 0 0 0;
+            letter-spacing: 1px;
+        }
+
+        .website-link {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #D4AF37;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .website-link:hover {
+            text-decoration: underline;
+            color: #FDE08B;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <img src="logo.png" alt="Heir to the Crown Logo" class="game-logo">
+        
+        <h1>HEIR TO THE CROWN</h1>
+        
+        <p class="release-date">Available Worldwide beginning May 2026</p>
+        
+        <div class="motto-container">
+            <p class="motto active">"The King is dead. Gather your knights, lay siege to the usurpers, and defend the crown."</p>
+            <p class="motto">"A fractured realm cries out for a leader. Ride for glory, vanquish your rivals, and become the true defender of the realm."</p>
+            <p class="motto">"To claim the throne, you must first defend the crown."</p>
+        </div>
+    </main>
+
+    <footer>
+        <img src="SapiensQualia-LogoSquare.jpg" alt="Sapiens Qualia Logo" class="company-logo">
+        <p class="copyright">&copy; 2026 Sapiens Qualia</p>
+        <a href="https://sapiensqualia.com" target="_blank" class="website-link">sapiensqualia.com</a>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mottos = document.querySelectorAll('.motto');
+            let currentIndex = 0;
+
+            // Run the loop every 3.5 seconds (1s for fade, 2.5s for reading)
+            setInterval(() => {
+                // Fade out current
+                mottos[currentIndex].classList.remove('active');
+                
+                // Move to next (loop back to 0 if at the end)
+                currentIndex = (currentIndex + 1) % mottos.length;
+                
+                // Fade in new
+                mottos[currentIndex].classList.add('active');
+            }, 3500); 
+        });
+    </script>
+</body>
+</html>
