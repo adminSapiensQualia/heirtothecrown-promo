@@ -14,7 +14,7 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100%;
             background: radial-gradient(circle at center, #0b111a 0%, #000000 100%);
             color: #ffffff;
             display: flex;
@@ -23,6 +23,7 @@
             justify-content: space-between;
             text-align: center;
             overflow-x: hidden;
+            font-family: 'MedievalSharp', cursive;
         }
 
         /* Main Content Container */
@@ -31,9 +32,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 20px;
             margin-top: 40px;
+            width: 100%;
+            max-width: 1200px;
         }
 
         /* Game Logo */
@@ -56,15 +59,50 @@
             text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9);
         }
 
-        /* Subtitle - Release Date */
-        .release-date {
+        /* Subtitle - Release Date & Platforms */
+        .release-info {
             font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: #cccccc;
             margin-top: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+        }
+        .release-date {
+            font-weight: 900;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: #D4AF37;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin: 0;
+        }
+        .platforms {
+            font-weight: 700;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            color: #cccccc;
+            letter-spacing: 1px;
+            margin: 5px 0 0 0;
+        }
+
+        /* Discord CTA Button */
+        .discord-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 40px;
+            background-color: #5865F2; /* Discord Blurple */
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 6px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.7);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .discord-btn:hover {
+            background-color: #4752C4;
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 20px rgba(88, 101, 242, 0.4);
         }
 
         /* Motto Slideshow Container */
@@ -73,44 +111,90 @@
             grid-template-areas: "inner";
             max-width: 700px;
             margin-top: 40px;
+            margin-bottom: 20px;
             padding: 0 20px;
+            min-height: 80px; /* Prevents layout jumping */
         }
 
-        /* The Mottos */
         .motto {
-            grid-area: inner; /* Stacks all mottos in the exact same spot */
-            font-family: 'MedievalSharp', cursive;
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            grid-area: inner; 
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
             color: #ffffff;
             line-height: 1.5;
             font-style: italic;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
             margin: 0;
-            opacity: 0; /* Hidden by default */
-            transition: opacity 1s ease-in-out; /* 1 second smooth crossfade */
-            pointer-events: none; /* Prevents invisible text from blocking clicks */
+            opacity: 0; 
+            transition: opacity 1s ease-in-out; 
+            pointer-events: none; 
         }
-
-        /* The Active Motto */
         .motto.active {
             opacity: 1;
             pointer-events: auto;
         }
 
+        /* --- VIDEO GRID SECTION --- */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .video-wrapper {
+            flex: 1 1 450px; 
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            background: rgba(26, 26, 36, 0.6);
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.8);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Placeholder styling for Video 2 */
+        .placeholder-video {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px dashed #8B5A2B;
+        }
+        .placeholder-video span {
+            font-family: 'Cinzel', serif;
+            color: #8B5A2B;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
         /* Footer / Company Info */
         footer {
-            padding: 30px 20px 40px 20px;
+            padding: 40px 20px 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
             opacity: 0.85;
             transition: opacity 0.3s ease;
+            width: 100%;
         }
 
-        footer:hover {
-            opacity: 1;
-        }
+        footer:hover { opacity: 1; }
 
         .company-logo {
             width: 65px;
@@ -148,13 +232,29 @@
         
         <h1>HEIR TO THE CROWN</h1>
         
-        <p class="release-date">Available Worldwide beginning May 2026</p>
+        <div class="release-info">
+            <p class="release-date">Launching June 17th, 2026</p>
+            <p class="platforms">on iOS, Android, macOS, and Windows</p>
+        </div>
+
+        <a href="https://discord.gg/SRHVy6Pd" target="_blank" class="discord-btn">JOIN THE REALM ON DISCORD</a>
         
         <div class="motto-container">
             <p class="motto active">"The King is dead. Gather your knights, lay siege to the usurpers, and defend the crown."</p>
             <p class="motto">"A fractured realm cries out for a leader. Ride for glory, vanquish your rivals, and become the true defender of the realm."</p>
             <p class="motto">"To claim the throne, you must first defend the crown."</p>
         </div>
+
+        <div class="video-container">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/h4Q_Lk5s8qo" title="Heir to the Crown - Official Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            <div class="video-wrapper placeholder-video">
+                <span>New Trailer Unlocking Soon...</span>
+            </div>
+        </div>
+
     </main>
 
     <footer>
@@ -168,24 +268,16 @@
             const mottos = document.querySelectorAll('.motto');
             let currentIndex = 0;
 
-            // Run the loop every 3.5 seconds (1s for fade, 2.5s for reading)
+            // Run the loop every 3.5 seconds
             setInterval(() => {
-                // Fade out current
                 mottos[currentIndex].classList.remove('active');
-                
-                // Move to next (loop back to 0 if at the end)
                 currentIndex = (currentIndex + 1) % mottos.length;
-                
-                // Fade in new
                 mottos[currentIndex].classList.add('active');
             }, 3500); 
         });
     </script>
 
-
-<script data-goatcounter="https://heirtothecrown.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
+    <script data-goatcounter="https://heirtothecrown.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
