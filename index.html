@@ -17,52 +17,43 @@
             min-height: 100%;
             background: radial-gradient(circle at center, #0b111a 0%, #000000 100%);
             color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            text-align: center;
-            overflow-x: hidden;
             font-family: 'MedievalSharp', cursive;
+            overflow-x: hidden;
         }
 
-        /* Main Content Container */
+        /* Layout Grid */
+        .layout-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Center Content Container */
         main {
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 20px;
-            margin-top: 40px;
-            width: 100%;
-            max-width: 1200px;
+            text-align: center;
         }
 
         /* Game Logo */
         .game-logo {
-            max-width: 350px;
-            width: 80%;
+            max-width: 400px;
+            width: 90%;
             height: auto;
             margin-bottom: 10px;
             filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8)); 
         }
 
-        /* Dominant Title */
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-weight: 900;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            color: #FDE08B;
-            margin: 0;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9);
-        }
-
         /* Subtitle - Release Date & Platforms */
         .release-info {
             font-family: 'Cinzel', serif;
-            margin-top: 15px;
+            margin-top: 5px;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
         }
         .release-date {
@@ -81,12 +72,49 @@
             margin: 5px 0 0 0;
         }
 
+        /* Store Links Section */
+        .store-links-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            background: rgba(26, 26, 36, 0.8);
+            border: 2px solid #D4AF37;
+            color: #ffffff;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            min-width: 250px;
+        }
+        
+        .store-btn:hover {
+            background: #D4AF37;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
         /* Discord CTA Button */
         .discord-btn {
             display: inline-block;
             margin-top: 25px;
             padding: 15px 40px;
-            background-color: #5865F2; /* Discord Blurple */
+            background-color: #5865F2;
             border: 2px solid #ffffff;
             color: #ffffff;
             font-family: 'Cinzel', serif;
@@ -97,15 +125,13 @@
             border-radius: 6px;
             box-shadow: 0px 5px 15px rgba(0,0,0,0.7);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         .discord-btn:hover {
             background-color: #4752C4;
             transform: translateY(-2px);
-            box-shadow: 0px 8px 20px rgba(88, 101, 242, 0.4);
         }
 
-        /* Motto Slideshow Container */
+        /* Motto Slideshow */
         .motto-container {
             display: grid;
             grid-template-areas: "inner";
@@ -113,9 +139,8 @@
             margin-top: 40px;
             margin-bottom: 20px;
             padding: 0 20px;
-            min-height: 80px; /* Prevents layout jumping */
+            min-height: 80px;
         }
-
         .motto {
             grid-area: inner; 
             font-size: clamp(1.2rem, 2.5vw, 1.5rem);
@@ -133,20 +158,17 @@
             pointer-events: auto;
         }
 
-        /* --- VIDEO GRID SECTION --- */
+        /* Video Grid */
         .video-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 20px;
             width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
         }
-
         .video-wrapper {
-            flex: 1 1 450px; 
+            flex: 1 1 400px; 
             max-width: 560px;
             aspect-ratio: 16 / 9;
             background: rgba(26, 26, 36, 0.6);
@@ -156,7 +178,6 @@
             overflow: hidden;
             position: relative;
         }
-
         .video-wrapper iframe {
             width: 100%;
             height: 100%;
@@ -166,103 +187,738 @@
             left: 0;
         }
 
-        /* Footer / Company Info */
+        /* --- WIKI & LORE SIDEBARS --- */
+        .sidebar {
+            background: rgba(15, 15, 20, 0.7);
+            border: 1px solid #D4AF37;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            height: fit-content;
+        }
+        .sidebar h2 {
+            font-family: 'Cinzel', serif;
+            color: #FDE08B;
+            text-align: center;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #D4AF37;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* Expandable Details */
+        details {
+            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        details[open] {
+            background: rgba(26, 26, 36, 0.8);
+            border-color: #D4AF37;
+        }
+        summary {
+            font-family: 'Cinzel', serif;
+            color: #D4AF37;
+            font-size: 1.2rem;
+            cursor: pointer;
+            list-style: none;
+            font-weight: bold;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary:hover { color: #FDE08B; }
+        
+        .wiki-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #cccccc;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        /* Pop-up Triggers (Playful Buttons) */
+        .popup-trigger {
+            background: transparent;
+            border: none;
+            color: #FDE08B;
+            text-decoration: underline;
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 5px;
+        }
+        .popup-trigger:hover { color: #ffffff; }
+
+        /* Modals (Pop-ups) */
+        dialog {
+            background: #111;
+            color: #fff;
+            border: 2px solid #D4AF37;
+            border-radius: 8px;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.9);
+            font-family: 'MedievalSharp', cursive;
+        }
+        dialog::backdrop {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(3px);
+        }
+        dialog h3 {
+            font-family: 'Cinzel', serif;
+            color: #FDE08B;
+            font-size: 2rem;
+            margin-top: 0;
+            text-align: center;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .close-dialog {
+            display: block;
+            background: #D4AF37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 20px auto 0 auto;
+        }
+        .close-dialog:hover {
+            background: #FDE08B;
+        }
+
+        /* Modal Internal Styling */
+        .lore-group { margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px dashed rgba(212, 175, 55, 0.4); }
+        .lore-group h4 { color: #D4AF37; font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 15px; text-transform: uppercase; }
+        .char-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .char-card { background: rgba(0,0,0,0.5); border: 1px solid #333; border-radius: 8px; padding: 15px; text-align: center; }
+        .char-images { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
+        .char-images img { border-radius: 4px; border: 1px solid #D4AF37; }
+        .card-img { width: 90px; height: auto; }
+        .coat-img { width: 65px; height: 65px; object-fit: contain; }
+        .char-card h5 { color: #FDE08B; font-family: 'Cinzel', serif; font-size: 1.1rem; margin: 0 0 10px 0; }
+        .char-card p { font-size: 0.9rem; line-height: 1.5; color: #cccccc; margin: 0; }
+
+        .lady-card { display: flex; align-items: center; gap: 20px; background: rgba(0,0,0,0.5); border: 1px solid #333; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .lady-img { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 2px solid #D4AF37; }
+        .lady-info { text-align: left; }
+        .lady-info h5 { color: #FDE08B; font-family: 'Cinzel', serif; font-size: 1.3rem; margin: 0 0 5px 0; }
+        .lady-info p { font-size: 1rem; line-height: 1.5; color: #cccccc; margin: 0; }
+        .allegiance { display: inline-block; margin-top: 8px; padding: 4px 8px; background: rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; border-radius: 4px; font-size: 0.85rem; color: #FDE08B; }
+
+        .quest-img { width: 100%; height: auto; border-radius: 8px; border: 1px solid #D4AF37; margin-bottom: 15px; }
+        
+        .minigame-container { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; align-items: flex-start; }
+        .minigame-img-tall { max-width: 200px; height: auto; border: 1px solid #D4AF37; border-radius: 8px; flex-shrink: 0; }
+        .minigame-img-wide { width: 100%; max-width: 500px; height: auto; border: 1px solid #D4AF37; border-radius: 8px; margin: 15px 0; display: block; }
+        .minigame-text { flex: 1; min-width: 250px; }
+
+        /* Footer */
         footer {
-            padding: 40px 20px 40px 20px;
+            grid-column: 1 / -1;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 10px;
             opacity: 0.85;
             transition: opacity 0.3s ease;
-            width: 100%;
         }
-
         footer:hover { opacity: 1; }
-
         .company-logo {
             width: 65px;
             height: 65px;
             border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .copyright {
             font-family: 'Cinzel', serif;
             font-size: 0.9rem;
             color: #aaaaaa;
             margin: 5px 0 0 0;
-            letter-spacing: 1px;
         }
-
         .website-link {
             font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
             color: #D4AF37;
             text-decoration: none;
-            letter-spacing: 1px;
         }
 
-        .website-link:hover {
-            text-decoration: underline;
-            color: #FDE08B;
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .layout-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                order: 2;
+            }
+            main {
+                order: 1;
+            }
+            .lady-card { flex-direction: column; text-align: center; }
+            .lady-info { text-align: center; }
+            .minigame-container { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <main>
-        <img src="logo.png" alt="Heir to the Crown Logo" class="game-logo">
+    <div class="layout-wrapper">
         
-        <h1>HEIR TO THE CROWN</h1>
-        
-        <div class="release-info">
-            <p class="release-date">Launching June 17th, 2026</p>
-            <p class="platforms">on iOS, Android, macOS, and Windows</p>
-        </div>
+        <!-- LEFT SIDEBAR: THE COURT -->
+        <aside class="sidebar left-sidebar">
+            <h2>The Court</h2>
+            
+            <details>
+                <summary>The Lords of the Realm</summary>
+                <div class="wiki-content">
+                    The realm is divided by ancient bloodlines: Norman and Saxon. 
+                    <button class="popup-trigger" onclick="document.getElementById('lords-modal').showModal()">Read full Lord profiles...</button>
+                </div>
+            </details>
 
-        <a href="https://discord.gg/SRHVy6Pd" target="_blank" class="discord-btn">JOIN THE REALM ON DISCORD</a>
-        
-        <div class="motto-container">
-            <p class="motto active">"The King is dead. Gather your knights, lay siege to the usurpers, and defend the crown."</p>
-            <p class="motto">"A fractured realm cries out for a leader. Ride for glory, vanquish your rivals, and become the true defender of the realm."</p>
-            <p class="motto">"To claim the throne, you must first defend the crown."</p>
-        </div>
+            <details>
+                <summary>The Five Ladies</summary>
+                <div class="wiki-content">
+                    Five influential ladies hold the true power of the court, balancing alliances and secrets.
+                    <button class="popup-trigger" onclick="document.getElementById('ladies-modal').showModal()">Discover their allegiances...</button>
+                </div>
+            </details>
 
-        <div class="video-container">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/h4Q_Lk5s8qo" title="Heir to the Crown - Official Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <details>
+                <summary>Epic Quests</summary>
+                <div class="wiki-content">
+                    Dynamic storylines intertwine the fates of the Lords and Ladies. Every choice shapes the kingdom.
+                    <button class="popup-trigger" onclick="document.getElementById('quests-modal').showModal()">View Active Legends...</button>
+                </div>
+            </details>
+        </aside>
+
+        <!-- CENTER MAIN CONTENT -->
+        <main>
+            <img src="HeirToTheCrown-Logo-Illuminated.jpg" alt="Heir to the Crown Logo" class="game-logo">
+            
+            <div class="release-info">
+                <p class="release-date">Currently available!</p>
+                <p class="platforms">on iOS, Android, macOS, and Windows</p>
             </div>
 
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/MK07QKkFMFo" title="Heir to the Crown - The 19 Lords" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="store-links-container">
+                <a href="https://apps.apple.com/us/app/heir-to-the-crown/id6776332561" target="_blank" class="store-btn">🍏 Get it on App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.sapiensqualia.heirtothecrown" target="_blank" class="store-btn">🤖 Get it on Google Play</a>
+                <a href="https://sapiensqualia.lemonsqueezy.com/checkout/buy/09f358bd-bc2a-47fd-bb13-f32eb539cd08" target="_blank" class="store-btn">🍏 Get it for macOS</a>
+                <a href="https://sapiensqualia.lemonsqueezy.com/checkout/buy/69aa2df3-e09b-425c-a245-3d7da4e8d29c" target="_blank" class="store-btn">🪟 Get it for Windows</a>
             </div>
-        </div>
 
-    </main>
+            <a href="https://discord.gg/SRHVy6Pd" target="_blank" class="discord-btn">JOIN THE REALM ON DISCORD</a>
+            
+            <div class="motto-container">
+                <p class="motto active">"The King is dead. Gather your knights, lay siege to the usurpers, and defend the crown."</p>
+                <p class="motto">"A fractured realm cries out for a leader. Ride for glory, vanquish your rivals, and become the true defender of the realm."</p>
+                <p class="motto">"To claim the throne, you must first defend the crown."</p>
+            </div>
 
-    <footer>
-        <img src="SapiensQualia-LogoSquare.jpg" alt="Sapiens Qualia Logo" class="company-logo">
-        <p class="copyright">&copy; 2026 Sapiens Qualia</p>
-        <a href="https://sapiensqualia.com" target="_blank" class="website-link">sapiensqualia.com</a>
-    </footer>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/h4Q_Lk5s8qo" title="Heir to the Crown - Official Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/MK07QKkFMFo" title="Heir to the Crown - The 19 Lords" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR: THE CAMPAIGN -->
+        <aside class="sidebar right-sidebar">
+            <h2>The Campaign</h2>
+            
+            <details>
+                <summary>Empire & Troops</summary>
+                <div class="wiki-content">
+                    Command your forces with strategic precision. Provision strongholds and move armies across the map.
+                    <button class="popup-trigger" onclick="document.getElementById('empire-modal').showModal()">Learn movement mechanics...</button>
+                </div>
+            </details>
+
+            <details>
+                <summary>Tournaments & Events</summary>
+                <div class="wiki-content">
+                    Joust for honor, raid enemy castles, court noble ladies, and dispatch spies to sabotage your rivals.
+                    <button class="popup-trigger" onclick="document.getElementById('minigames-modal').showModal()">Rules of the events...</button>
+                </div>
+            </details>
+        </aside>
+
+        <!-- MODALS (Hidden by default) -->
+        
+        <!-- LORDS MODAL -->
+        <dialog id="lords-modal">
+            <h3>The Bloodlines of the Realm</h3>
+            
+            <div id="lords-content" style="max-height: 60vh; overflow-y: auto; padding-right: 15px;">
+                
+                <!-- THE PROTAGONIST -->
+                <div class="lore-group">
+                    <h4>The True Heir</h4>
+                    <div class="char-grid">
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_1.jpg" alt="Godfrey Ironblade" class="card-img">
+                                <img src="assets/coat_lord_1.png" alt="Coat of Arms" class="coat-img">
+                            </div>
+                            <h5>Godfrey Ironblade (Saxon)</h5>
+                            <p>The rightful heir to the throne. Amidst the chaos of a fractured kingdom, Godfrey must draw his blade and fight a relentless war to establish the truth of his lineage and claim the crown.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE OLD GUARD -->
+                <div class="lore-group">
+                    <h4>The Old Guard</h4>
+                    <p style="font-size: 0.95rem; color: #aaa; margin-bottom: 15px; font-style: italic;">Representing the entrenched wealth and traditional aristocracy of Britannia, these typical old-money Lords rely on deeply rooted generational power to influence the court.</p>
+                    <div class="char-grid">
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_2.jpg" class="card-img"><img src="assets/coat_lord_2.png" class="coat-img">
+                            </div>
+                            <h5>Leofric the Resolute (Saxon)</h5>
+                            <p>A staunch traditionalist holding massive estates.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_10.jpg" class="card-img"><img src="assets/coat_lord_10.png" class="coat-img">
+                            </div>
+                            <h5>Godric of Kent (Saxon)</h5>
+                            <p>Commands the wealthy southeastern trade routes of old.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_13.jpg" class="card-img"><img src="assets/coat_lord_13.png" class="coat-img">
+                            </div>
+                            <h5>Hugh de Montfort (Norman)</h5>
+                            <p>A lord whose family wealth was built on generations of conquest.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_19.jpg" class="card-img"><img src="assets/coat_lord_19.png" class="coat-img">
+                            </div>
+                            <h5>William FitzOsbern (Norman)</h5>
+                            <p>An aristocrat who demands respect through ancestral prestige.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE CONTINENTAL ELITE -->
+                <div class="lore-group">
+                    <h4>The Continental Elite</h4>
+                    <p style="font-size: 0.95rem; color: #aaa; margin-bottom: 15px; font-style: italic;">Lords bearing a distinct French heritage. Their courts are known for continental elegance, advanced cavalry tactics, and deep connections across the channel.</p>
+                    <div class="char-grid">
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_11.jpg" class="card-img"><img src="assets/coat_lord_11.png" class="coat-img">
+                            </div>
+                            <h5>Guillaume de Rouen (Norman)</h5>
+                            <p>A master tactician favoring French heavy cavalry.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_20.jpg" class="card-img"><img src="assets/coat_lord_20.png" class="coat-img">
+                            </div>
+                            <h5>Eustace of Boulogne (Norman)</h5>
+                            <p>Brings continental wealth and ruthless European politics to Britannia.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_5.jpg" class="card-img"><img src="assets/coat_lord_5.png" class="coat-img">
+                            </div>
+                            <h5>Edwin the Fair (Saxon)</h5>
+                            <p>A Saxon lord who adopted the elegant French courtly customs.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_15.jpg" class="card-img"><img src="assets/coat_lord_15.png" class="coat-img">
+                            </div>
+                            <h5>Roger de Gaille (Norman)</h5>
+                            <p>Commands a massive shadow fleet enforcing a brutal blockade in the English Channel, hiding behind a network of coastal smugglers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE REBELS & ZEALOTS (Quest Targets) -->
+                <div class="lore-group">
+                    <h4>The Rebels & Zealots</h4>
+                    <p style="font-size: 0.95rem; color: #aaa; margin-bottom: 15px; font-style: italic;">Dangerous warlords and heretics holding legendary artifacts. They must be confronted through Epic Quests.</p>
+                    <div class="char-grid">
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_7.jpg" class="card-img"><img src="assets/coat_lord_7.png" class="coat-img">
+                            </div>
+                            <h5>Uhtred the Wolf (Saxon)</h5>
+                            <p>A fearsome warlord controlling the freezing Scottish highlands. He utilizes wild ambushes and will only kneel to a warrior who can defeat him in the fighting pit.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_18.jpg" class="card-img"><img src="assets/coat_lord_18.png" class="coat-img">
+                            </div>
+                            <h5>Geoffrey the Mad (Norman)</h5>
+                            <p>An unstable zealot hiding in the Welsh mountains. Believing pagan gods crowned him True King, he clutches the ancient Crown of Britannia inside a decrepit, trap-filled fortress.</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_14.jpg" class="card-img"><img src="assets/coat_lord_14.png" class="coat-img">
+                            </div>
+                            <h5>Odo the Bishop (Norman)</h5>
+                            <p>A corrupt bishop who stole the Papal Bull granting the Divine Right to rule. He has taken sanctuary in a mist-shrouded Irish abbey guarded by excommunicated Templar knights.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE ENIGMAS -->
+                <div class="lore-group" style="border-bottom: none;">
+                    <h4>The Enigmatic Lords</h4>
+                    <p style="font-size: 0.95rem; color: #aaa; margin-bottom: 15px; font-style: italic;">
+                        These formidable lords possess striking appearances and guard their secrets closely. Their true motives remain a riddle within the court, with their full stories and epic quests waiting to be unveiled in future chronicles of the realm.
+                    </p>
+                    <div class="char-grid">
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_3.jpg" class="card-img"><img src="assets/coat_lord_3.png" class="coat-img">
+                            </div>
+                            <h5>Athelstan the Brave (Saxon)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_4.jpg" class="card-img"><img src="assets/coat_lord_4.png" class="coat-img">
+                            </div>
+                            <h5>Morcar of the North (Saxon)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_6.jpg" class="card-img"><img src="assets/coat_lord_6.png" class="coat-img">
+                            </div>
+                            <h5>Hereward the Wake (Saxon)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_8.jpg" class="card-img"><img src="assets/coat_lord_8.png" class="coat-img">
+                            </div>
+                            <h5>Eadric the Wild (Saxon)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_9.jpg" class="card-img"><img src="assets/coat_lord_9.png" class="coat-img">
+                            </div>
+                            <h5>Waltheof the Stout (Saxon)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_12.jpg" class="card-img"><img src="assets/coat_lord_12.png" class="coat-img">
+                            </div>
+                            <h5>Robert Ironhand (Norman)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_16.jpg" class="card-img"><img src="assets/coat_lord_16.png" class="coat-img">
+                            </div>
+                            <h5>Richard the Swift (Norman)</h5>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-images">
+                                <img src="assets/card_17.jpg" class="card-img"><img src="assets/coat_lord_17.png" class="coat-img">
+                            </div>
+                            <h5>Alan the Red (Norman)</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="close-dialog" onclick="document.getElementById('lords-modal').close()">Close Archives</button>
+        </dialog>
+
+        <!-- LADIES MODAL -->
+        <dialog id="ladies-modal">
+            <h3>The Five Ladies</h3>
+            
+            <div id="ladies-content" style="max-height: 60vh; overflow-y: auto; padding-right: 15px;">
+                
+                <div class="lady-card">
+                    <img src="assets/bust_lady_1.jpg" alt="Lady Eleanor" class="lady-img">
+                    <div class="lady-info">
+                        <h5>Eleanor</h5>
+                        <p>A beautiful lady of the court whose striking grace masks a sharp, calculating political mind.</p>
+                        <span class="allegiance">Allied with: Leofric the Resolute</span>
+                    </div>
+                </div>
+
+                <div class="lady-card">
+                    <img src="assets/bust_lady_2.jpg" alt="Lady Matilda" class="lady-img">
+                    <div class="lady-info">
+                        <h5>Matilda</h5>
+                        <p>A cunning noble known for her intricate web of spies and informants. She is a dangerous player in the game of thrones.</p>
+                        <span class="allegiance">Allied with: Guillaume de Rouen</span>
+                    </div>
+                </div>
+
+                <div class="lady-card">
+                    <img src="assets/bust_lady_3.jpg" alt="Lady Isabella" class="lady-img">
+                    <div class="lady-info">
+                        <h5>Isabella</h5>
+                        <p>A wealthy heiress whose vast fortunes can provision entire armies or bankrupt rival factions.</p>
+                        <span class="allegiance">Allied with: Morcar of the North</span>
+                    </div>
+                </div>
+
+                <div class="lady-card">
+                    <img src="assets/bust_lady_4.jpg" alt="Lady Adela" class="lady-img">
+                    <div class="lady-info">
+                        <h5>Adela</h5>
+                        <p>A fierce maiden who is as comfortable commanding respect in the war room as she is navigating high society.</p>
+                        <span class="allegiance">Allied with: Robert Ironhand</span>
+                    </div>
+                </div>
+
+                <div class="lady-card">
+                    <img src="assets/bust_lady_5.jpg" alt="Lady Rosamund" class="lady-img">
+                    <div class="lady-info">
+                        <h5>Rosamund</h5>
+                        <p>A charming poet whose honeyed words, artistic flair, and deep charisma make her beloved by the common people.</p>
+                        <span class="allegiance">Allied with: Athelstan the Brave</span>
+                    </div>
+                </div>
+
+            </div>
+            <button class="close-dialog" onclick="document.getElementById('ladies-modal').close()">Close Archives</button>
+        </dialog>
+        
+        <!-- QUESTS MODAL -->
+        <dialog id="quests-modal">
+            <h3>Epic Quests</h3>
+            <div id="quests-content" style="max-height: 60vh; overflow-y: auto; padding-right: 15px;">
+
+                <div class="lore-group">
+                    <h4>The Blockade of the Crown</h4>
+                    <img src="assets/quest_1.jpg" alt="The Blockade of the Crown" class="quest-img">
+                    <p>Break Roger de Gaille's shadow fleet in the English Channel to secure the realm's wealth. The true king must secure naval manifests from hostile coastal smugglers, commandeer a formidable vessel, and break through the fiery blockade line to force the Admiral's unconditional surrender.</p>
+                </div>
+
+                <div class="lore-group">
+                    <h4>The Northern Vanguard</h4>
+                    <img src="assets/quest_2.jpg" alt="The Northern Vanguard" class="quest-img">
+                    <p>Travel to the freezing Scottish highlands to earn the respect of Uhtred the Wolf and his untamed clans. You will be forced to survive violent highland ambushes within narrow ravines, and ultimately face Uhtred himself in a trial by single combat inside his fighting pit to win the loyalty of the North.</p>
+                </div>
+
+                <div class="lore-group">
+                    <h4>The Madman's Prophecy</h4>
+                    <img src="assets/quest_3.jpg" alt="The Madman's Prophecy" class="quest-img">
+                    <p>Navigate the treacherous Welsh mountains to rip the ancient Crown of Britannia from the hands of Geoffrey the Mad. This harrowing journey requires navigating deadly spiked traps, launching a raid on a zealot camp, and braving the maddening illusions of a decrepit keep to secure the historic artifact.</p>
+                </div>
+
+                <div class="lore-group" style="border-bottom: none;">
+                    <h4>The Papal Mandate</h4>
+                    <img src="assets/quest_4.jpg" alt="The Papal Mandate" class="quest-img">
+                    <p>Sail across the violent Irish Sea to an isolated abbey to reclaim the Pope's holy document from Odo the Bishop. Confront heavily armored, excommunicated Templar guards to rescue the burning Papal Bull from the flames and establish your Divine Right to rule the kingdom.</p>
+                </div>
+
+            </div>
+            <button class="close-dialog" onclick="document.getElementById('quests-modal').close()">Close Archives</button>
+        </dialog>
+
+        <!-- EMPIRE MODAL -->
+        <dialog id="empire-modal">
+            <h3>Empire Building & Troops</h3>
+            <div id="empire-content" style="max-height: 60vh; overflow-y: auto; padding-right: 15px;">
+                
+                <img src="assets/empire_1.jpg" alt="Empire Strategy Map" class="quest-img">
+                
+                <div class="lore-group">
+                    <h4>Strategic Expansion</h4>
+                    <p>Conquest follows a classic, Risk-based approach. You command armies across a divided map, claiming adjacent territories to expand your borders. Rather than moving troops peacefully between friendly territories, your armies are permanently stationed where they stand. To attack a rival province, you must launch your invasion from a bordering territory that you already control.</p>
+                </div>
+
+                <div class="lore-group">
+                    <h4>Garrison & Rebellion</h4>
+                    <p>Ruling a kingdom requires an iron grip. A skeleton garrison is not enough to maintain order in newly conquered lands. If you leave a territory with fewer than three soldiers stationed to guard it, the local peasantry will grow bold, and their loyalty will rapidly deteriorate. If loyalty reaches zero, a violent rebellion will spark, overthrowing your rule and replacing your forces with a hostile rebel militia.</p>
+                </div>
+                
+                <img src="assets/empire_2.jpg" alt="Troop Management" class="quest-img">
+
+                <div class="lore-group">
+                    <h4>The War Machine</h4>
+                    <p>A true king must balance the royal treasury with military might. Gold is the lifeblood of your empire, generated each season by the territories you hold. With this gold, you can recruit three distinct types of forces to bolster your garrisons or lead your invasions:</p>
+                    <ul style="color: #cccccc; font-size: 0.95rem; line-height: 1.5; margin-top: 10px;">
+                        <li><strong style="color: #D4AF37;">Soldiers:</strong> The backbone of any army. Cheap, reliable infantry necessary to hold territory and prevent rebellions.</li>
+                        <li><strong style="color: #D4AF37;">Knights:</strong> Elite heavy cavalry. Expensive, but their devastating power in open combat can break the lines of far larger infantry forces.</li>
+                        <li><strong style="color: #D4AF37;">Catapults:</strong> Essential siege engines. Useless in a skirmish, but absolutely critical for shattering fortified castle walls before an assault.</li>
+                    </ul>
+                </div>
+
+                <div class="lore-group" style="border-bottom: none;">
+                    <h4>Diplomacy & Espionage</h4>
+                    <img src="assets/empire_3.jpg" alt="Diplomacy Screen" class="quest-img" style="margin-top: 15px;">
+                    <p>Expansion is not just won with swords. A wise ruler leverages the political map. You can dispatch envoys to offer gold to rival lords, securing Non-Aggression Pacts to safely turn your back on them, or deploy your spymaster to sabotage their fortifications before you march.</p>
+                </div>
+
+            </div>
+            <button class="close-dialog" onclick="document.getElementById('empire-modal').close()">Close Archives</button>
+        </dialog>
+
+        <!-- MINIGAMES MODAL -->
+        <dialog id="minigames-modal">
+            <h3>Tournaments & Events</h3>
+            <div id="minigames-content" style="max-height: 60vh; overflow-y: auto; padding-right: 15px;">
+
+                <!-- THE JOUST -->
+                <div class="lore-group">
+                    <h4>The Grand Tournament</h4>
+                    <div class="minigame-container">
+                        <img src="assets/minigame_jousting_1.jpg" alt="The Joust" class="minigame-img-tall">
+                        <div class="minigame-text">
+                            <p>Rival lords will frequently invite you to test your mettle in the Grand Tournament. The joust requires steady hands and perfect timing.</p>
+                            <ul style="color: #cccccc; font-size: 0.95rem; line-height: 1.5; margin-top: 10px; padding-left: 20px;">
+                                <li><strong>The Mechanic:</strong> Drag your lance to aim as your warhorse charges forward. The enemy grows larger as they approach, shifting your target window.</li>
+                                <li><strong>The Strike:</strong> Striking the center-right (their shield) shatters your lance for a glorious victory, increasing your Leadership stat. A strike to the body is a tie. Missing entirely results in defeat.</li>
+                                <li><strong>The Disgrace:</strong> Do not let your lance drop! Striking the opponent's horse will result in absolute disgrace, causing your vassals to abandon you and stripping you of all conquered lands.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THE SIEGE -->
+                <div class="lore-group">
+                    <h4>The Castle Siege</h4>
+                    <div class="minigame-container">
+                        <img src="assets/minigame_siege_1.jpg" alt="Castle Siege" class="minigame-img-tall">
+                        <div class="minigame-text">
+                            <p>Attacking a fortified territory triggers a physics-based siege. Fortifications provide a massive defensive advantage to the garrison unless they are destroyed.</p>
+                            <ul style="color: #cccccc; font-size: 0.95rem; line-height: 1.5; margin-top: 10px; padding-left: 20px;">
+                                <li><strong>The Mechanic:</strong> You command a catapult. Drag backward anywhere on the screen to pull the arm back, calculating your trajectory and power, and release to launch a boulder.</li>
+                                <li><strong>The Goal:</strong> You must strike the castle wall repeatedly to reduce its HP to zero before the time limit expires.</li>
+                                <li><strong>The Result:</strong> If the wall shatters, the enemy loses their massive defensive multiplier for the subsequent battle. If you run out of ammo or time, your infantry will be forced to assault the intact walls.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SWORD COMBAT -->
+                <div class="lore-group">
+                    <h4>Castle Raids & Duels</h4>
+                    <div class="minigame-container">
+                        <img src="assets/minigame_swordfight_1.jpg" alt="Sword Combat" class="minigame-img-tall">
+                        <div class="minigame-text">
+                            <p>Whether you are rescuing a kidnapped damsel or engaging in a desperate raid, single combat is ruthless and fast-paced.</p>
+                            <ul style="color: #cccccc; font-size: 0.95rem; line-height: 1.5; margin-top: 10px; padding-left: 20px;">
+                                <li><strong>The Mechanic:</strong> You have three stamina points and must choose between Striking, Parrying, or Retreating to regain stamina.</li>
+                                <li><strong>The Rhythm:</strong> The enemy AI will telegraph their attacks. If they prepare to strike, you must Parry. If they raise their guard to parry, you must hold your attack or risk being countered.</li>
+                                <li><strong>The Result:</strong> Deplete the enemy's HP before the clock runs out to secure victory, gold, and increased martial skills.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ESPIONAGE -->
+                <div class="lore-group">
+                    <h4>The Spymaster's Work</h4>
+                    <p>Gold can fund dark deeds. Dispatching your spymaster allows you to execute three distinct covert operations against rival lords, each triggering a unique challenge.</p>
+                    
+                    <div class="minigame-container" style="margin-top: 15px;">
+                        <img src="assets/minigame_spy_1.jpg" alt="Sabotage" class="minigame-img-tall">
+                        <div class="minigame-text">
+                            <strong style="color: #D4AF37;">Garrison Sabotage</strong><br>
+                            Destroy enemy catapults and knights before a battle. You must hold the screen to dash your spy forward, but freeze instantly when the patrolling guard turns to look.
+                        </div>
+                    </div>
+                    
+                    <div class="minigame-container">
+                        <img src="assets/minigame_spy_2.jpg" alt="Heist" class="minigame-img-tall">
+                        <div class="minigame-text">
+                            <strong style="color: #D4AF37;">Royal Heist</strong><br>
+                            Steal 25% of a rival lord's treasury. Time your strikes perfectly to pick the fast-spinning tumblers of the royal vault. Three missed strikes will shatter your pick and trigger the alarms.
+                        </div>
+                    </div>
+                    
+                    <div class="minigame-container">
+                        <img src="assets/minigame_spy_3.jpg" alt="False Flag" class="minigame-img-tall">
+                        <div class="minigame-text">
+                            <strong style="color: #D4AF37;">False Flag Forgery</strong><br>
+                            Forge treacherous letters to ruin a rival's relations with the entire realm. You are shown a royal seal for a fraction of a second. You must rely on your memory to select the exact matching seal from a grid of complex forgeries before time runs out.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROMANCE -->
+                <div class="lore-group" style="border-bottom: none;">
+                    <h4>Courtly Romance</h4>
+                    <p>Securing a marriage to one of the five Ladies of the court guarantees a permanent, unbreakable alliance with her associated Lord.</p>
+                    <img src="assets/minigame_romance_2.jpg" alt="Romance" class="minigame-img-wide">
+                    <ul style="color: #cccccc; font-size: 0.95rem; line-height: 1.5; margin-top: 10px; padding-left: 20px;">
+                        <li><strong>The Garden Stealth:</strong> Once a Lady is intrigued, she will invite you to the royal gardens. You must navigate a grid to reach her balcony while dodging the moving sightlines of the castle guards.</li>
+                        <li><strong>The Chamber:</strong> In her private chambers, you must carefully read her mood and dialogue, selecting the correct sequence of romantic actions to win her heart. One wrong move will break the tension and cost you her affection.</li>
+                    </ul>
+                </div>
+
+            </div>
+            <button class="close-dialog" onclick="document.getElementById('minigames-modal').close()">Close Archives</button>
+        </dialog>
+
+        <!-- FOOTER -->
+        <footer>
+            <img src="SapiensQualia-LogoSquare.jpg" alt="Sapiens Qualia Logo" class="company-logo">
+            <p class="copyright">&copy; 2026 Sapiens Qualia</p>
+            <a href="https://sapiensqualia.com" target="_blank" class="website-link">sapiensqualia.com</a>
+        </footer>
+
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const mottos = document.querySelectorAll('.motto');
             let currentIndex = 0;
-
-            // Run the loop every 3.5 seconds
             setInterval(() => {
                 mottos[currentIndex].classList.remove('active');
                 currentIndex = (currentIndex + 1) % mottos.length;
                 mottos[currentIndex].classList.add('active');
             }, 3500); 
+            
+            // Accordion logic to ensure only one <details> is open at a time
+            const allDetails = document.querySelectorAll('details');
+            allDetails.forEach(targetDetail => {
+                targetDetail.addEventListener('toggle', (e) => {
+                    if (targetDetail.open) {
+                        allDetails.forEach(detail => {
+                            if (detail !== targetDetail && detail.open) {
+                                detail.open = false;
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Close dialogs when clicking outside of them
+            const dialogs = document.querySelectorAll('dialog');
+            dialogs.forEach(dialog => {
+                dialog.addEventListener('click', (e) => {
+                    const dialogDimensions = dialog.getBoundingClientRect();
+                    if (
+                        e.clientX < dialogDimensions.left ||
+                        e.clientX > dialogDimensions.right ||
+                        e.clientY < dialogDimensions.top ||
+                        e.clientY > dialogDimensions.bottom
+                    ) {
+                        dialog.close();
+                    }
+                });
+            });
         });
     </script>
-
     <script data-goatcounter="https://heirtothecrown.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
-
